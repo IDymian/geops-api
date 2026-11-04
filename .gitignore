@@ -1,0 +1,37 @@
+# --- Build output ---
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.log
+
+# --- IDEs ---
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+bin/
+out/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Secrets (never commit) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+firebase-service-account*.json
+
+# --- Local data ---
+docker-data/
+*.dump
