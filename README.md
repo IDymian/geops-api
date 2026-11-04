@@ -49,7 +49,7 @@ docker compose up -d   # PostgreSQL + PostGIS y Redis
 
 - `main`: versión estable. Solo recibe `develop` al cerrar cada sprint, con un tag semántico (`v0.1.0`, `v0.2.0`…).
 - `develop`: integración. Cada funcionalidad llega mediante pull request desde una rama `feature/*`.
-- `wip/nightly`: **solo es un respaldo automático nocturno** de trabajo sin terminar. La historia real del proyecto está en las ramas `feature/*` y en sus pull requests.
+- `wip/nightly`: **solo es un respaldo automático nocturno** de trabajo sin terminar. La historia real del proyecto está en las ramas `feature/*` y en sus pull requests. Detalles: [docs/nightly-backup.md](docs/nightly-backup.md).
 
 ### Licencia
 
@@ -97,7 +97,7 @@ docker compose up -d   # PostgreSQL + PostGIS and Redis
 
 - `main`: stable. Receives `develop` only at the end of each sprint, with a semantic tag (`v0.1.0`, `v0.2.0`…).
 - `develop`: integration. Every feature arrives through a pull request from a `feature/*` branch.
-- `wip/nightly`: **only an automatic nightly backup** of unfinished work. The real project history lives in the `feature/*` branches and their pull requests.
+- `wip/nightly`: **only an automatic nightly backup** of unfinished work. The real project history lives in the `feature/*` branches and their pull requests. Details: [docs/nightly-backup.md](docs/nightly-backup.md).
 
 ### License
 
