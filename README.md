@@ -35,6 +35,8 @@
 
 Monolito modular organizado por *bounded contexts*: `identity`, `offers`, `coupons`, `reviews`, `subscriptions` y `payments`. Cada contexto tiene las capas `api`, `application`, `domain` e `infrastructure`. La API está versionada bajo `/api/v1`.
 
+Modelo de datos (diagrama ER y decisiones): [docs/data-model.md](docs/data-model.md).
+
 ### Cómo ejecutar
 
 > 🚧 En construcción. Se completará con Docker Compose en el primer sprint.
@@ -82,6 +84,8 @@ docker compose up -d   # PostgreSQL + PostGIS y Redis
 ### Architecture
 
 Modular monolith split into bounded contexts: `identity`, `offers`, `coupons`, `reviews`, `subscriptions` and `payments`. Each context has `api`, `application`, `domain` and `infrastructure` layers. The API is versioned under `/api/v1`.
+
+Data model (ER diagram and decisions): [docs/data-model.md](docs/data-model.md).
 
 ### Getting started
 
