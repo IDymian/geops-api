@@ -12,10 +12,10 @@
 
     <groupId>io.github.idymian</groupId>
     <artifactId>geops-api</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>geops-api</name>
     <description>GeoPS API: hyperlocal offers and coupons backend</description>
-    <url>https://github.com/IDymian/geops-api</url>
+    <url>https://github.com/geops-app/geops-api</url>
 
     <licenses>
         <license>
@@ -73,6 +73,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
 
         <!-- API documentation (Swagger UI) -->

@@ -11,7 +11,7 @@
 
 ## Español
 
-**GeoPS** conecta negocios locales con consumidores mediante ofertas y cupones hiperlocales según su ubicación. Este repositorio contiene la API REST que usa la app móvil [geops-mobile](https://github.com/IDymian/geops-mobile).
+**GeoPS** conecta negocios locales con consumidores mediante ofertas y cupones hiperlocales según su ubicación. Este repositorio contiene la API REST que usa la app móvil [geops-mobile](https://github.com/geops-app/geops-mobile).
 
 ### Funcionalidades
 
@@ -61,7 +61,7 @@ docker compose up -d   # PostgreSQL + PostGIS y Redis
 
 ## English
 
-**GeoPS** connects local businesses with consumers through hyperlocal, location-based offers and coupons. This repository holds the REST API used by the [geops-mobile](https://github.com/IDymian/geops-mobile) app.
+**GeoPS** connects local businesses with consumers through hyperlocal, location-based offers and coupons. This repository holds the REST API used by the [geops-mobile](https://github.com/geops-app/geops-mobile) app.
 
 ### Features
 
