@@ -22,5 +22,9 @@ updates:
     target-branch: develop
     schedule:
       interval: weekly
+    # The project targets Java 21 LTS: only patch/minor updates of the base images.
+    ignore:
+      - dependency-name: "eclipse-temurin"
+        update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "chore(docker)"
