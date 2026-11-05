@@ -57,7 +57,9 @@ erDiagram
         text description
         varchar phone
         varchar address
-        geography location "Point, SRID 4326"
+        float8 latitude
+        float8 longitude
+        geography location "generated from lat/lng, GiST index"
         varchar logo_url
         timestamptz created_at
         timestamptz updated_at
@@ -178,7 +180,7 @@ erDiagram
 ### Decisiones
 
 - **UUID como clave primaria** en lo que se expone en la API: no revela cuántos registros hay ni permite adivinar IDs ajenos. `categories` y `audit_log` usan claves numéricas porque son internas.
-- **`geography(Point, 4326)`** en `businesses.location`: `ST_DWithin` mide en metros reales sobre la Tierra, y un índice GiST mantiene rápida la búsqueda por radio. Las ofertas heredan la ubicación de su negocio.
+- **`geography(Point, 4326)`** en `businesses.location`: `ST_DWithin` mide en metros reales sobre la Tierra, y un índice GiST mantiene rápida la búsqueda por radio. Es una **columna generada** a partir de `latitude`/`longitude`: la aplicación solo maneja números y PostgreSQL arma el punto, sin necesidad de `hibernate-spatial`. Las ofertas heredan la ubicación de su negocio.
 - **Refresh tokens guardados como hash SHA-256**, nunca en texto plano. Cada uso genera uno nuevo (rotación); si se reutiliza uno ya rotado, se revoca toda su `family_id`, porque indica un robo de token.
 - **Cupón vs. cupón reclamado:** `coupons` es la plantilla que crea el proveedor (stock, vigencia); `user_coupons` es el código único que recibe cada consumidor y que se canjea una sola vez.
 - **`order_items.unit_price`** guarda el precio del momento de la compra, para que cambiar una oferta no altere pedidos pasados.
@@ -191,7 +193,7 @@ erDiagram
 | Migración | Contenido | Día / Sprint |
 |---|---|---|
 | `V1__enable_postgis` | Extensión PostGIS | Día 1 ✅ |
-| `V2__identity` | `users`, `refresh_tokens` | Día 1 |
+| `V2__identity` | `users`, `refresh_tokens` | Día 1 ✅ |
 | `V3__businesses_offers` | `businesses`, `categories` (con datos), `offers` | Día 2 |
 | `V4__coupons_audit` | `coupons`, `user_coupons`, `audit_log` | Día 3 |
 | `V5+` | Favoritos, reseñas, suscripciones, carrito, pedidos, pagos, dispositivos | Después del MVP |
@@ -205,7 +207,7 @@ Una migración aplicada nunca se edita: cualquier cambio va en una migración nu
 ### Decisions
 
 - **UUID primary keys** for everything exposed by the API: they hide record counts and prevent guessing other users' IDs. `categories` and `audit_log` use numeric keys because they are internal.
-- **`geography(Point, 4326)`** for `businesses.location`: `ST_DWithin` measures real meters on the Earth, and a GiST index keeps radius search fast. Offers inherit their business location.
+- **`geography(Point, 4326)`** for `businesses.location`: `ST_DWithin` measures real meters on the Earth, and a GiST index keeps radius search fast. It is a **generated column** built from `latitude`/`longitude`: the application only handles numbers and PostgreSQL builds the point, with no need for `hibernate-spatial`. Offers inherit their business location.
 - **Refresh tokens stored as SHA-256 hashes**, never in plain text. Each use issues a new one (rotation); reusing an already-rotated token revokes its whole `family_id`, since it signals token theft.
 - **Coupon vs. claimed coupon:** `coupons` is the provider's template (stock, validity); `user_coupons` is the unique code each consumer gets, redeemable once.
 - **`order_items.unit_price`** stores the price at purchase time, so editing an offer never changes past orders.
@@ -218,7 +220,7 @@ Una migración aplicada nunca se edita: cualquier cambio va en una migración nu
 | Migration | Content | Day / Sprint |
 |---|---|---|
 | `V1__enable_postgis` | PostGIS extension | Day 1 ✅ |
-| `V2__identity` | `users`, `refresh_tokens` | Day 1 |
+| `V2__identity` | `users`, `refresh_tokens` | Day 1 ✅ |
 | `V3__businesses_offers` | `businesses`, `categories` (seeded), `offers` | Day 2 |
 | `V4__coupons_audit` | `coupons`, `user_coupons`, `audit_log` | Day 3 |
 | `V5+` | Favorites, reviews, subscriptions, cart, orders, payments, devices | After the MVP |
