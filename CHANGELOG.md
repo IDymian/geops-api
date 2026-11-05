@@ -23,4 +23,4 @@ First sprint (Day 1 of the MVP): project foundation and authentication.
 - CI on GitHub Actions (build, Testcontainers tests, Docker image) and Dependabot.
 - Nightly backup scripts to the `wip/nightly` branch.
 
-[0.1.0]: https://github.com/IDymian/geops-api/releases/tag/v0.1.0
+[0.1.0]: https://github.com/geops-app/geops-api/releases/tag/v0.1.0
