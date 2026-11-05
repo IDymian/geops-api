@@ -1,7 +1,6 @@
 package io.github.idymian.geops.offers;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -159,12 +158,14 @@ class OffersIntegrationTests extends AbstractIntegrationTest {
 
         String consumer = signUp("CONSUMER");
 
-        List<String> within2Km = JsonPath.read(nearby(consumer, lat, lng, 2000, null)
+        String body2Km = nearby(consumer, lat, lng, 2000, null)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].distanceMeters").value(closeTo(0, 5)))
-                .andExpect(jsonPath("$[1].distanceMeters").value(closeTo(1500, 50)))
-                .andReturn().getResponse().getContentAsString(), "$[*].id");
+                .andReturn().getResponse().getContentAsString();
+        List<String> within2Km = JsonPath.read(body2Km, "$[*].id");
+        List<Integer> distances = JsonPath.read(body2Km, "$[*].distanceMeters");
         assertThat(within2Km).containsExactly(bakeryHere, foodNear);
+        assertThat(distances.get(0)).isBetween(0, 5);
+        assertThat(distances.get(1)).isBetween(1450, 1550);
 
         List<String> within10Km = JsonPath.read(nearby(consumer, lat, lng, 10_000, null)
                 .andReturn().getResponse().getContentAsString(), "$[*].id");
