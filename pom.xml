@@ -15,7 +15,7 @@
     <version>0.1.0</version>
     <name>geops-api</name>
     <description>GeoPS API: hyperlocal offers and coupons backend</description>
-    <url>https://github.com/IDymian/geops-api</url>
+    <url>https://github.com/geops-app/geops-api</url>
 
     <licenses>
         <license>
