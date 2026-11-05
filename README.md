@@ -35,6 +35,8 @@
 
 Monolito modular organizado por *bounded contexts*: `identity`, `offers`, `coupons`, `reviews`, `subscriptions` y `payments`. Cada contexto tiene las capas `api`, `application`, `domain` e `infrastructure`. La API está versionada bajo `/api/v1`.
 
+Modelo de datos (diagrama ER y decisiones): [docs/data-model.md](docs/data-model.md).
+
 ### Cómo ejecutar
 
 > 🚧 En construcción. Se completará con Docker Compose en el primer sprint.
@@ -49,7 +51,7 @@ docker compose up -d   # PostgreSQL + PostGIS y Redis
 
 - `main`: versión estable. Solo recibe `develop` al cerrar cada sprint, con un tag semántico (`v0.1.0`, `v0.2.0`…).
 - `develop`: integración. Cada funcionalidad llega mediante pull request desde una rama `feature/*`.
-- `wip/nightly`: **solo es un respaldo automático nocturno** de trabajo sin terminar. La historia real del proyecto está en las ramas `feature/*` y en sus pull requests.
+- `wip/nightly`: **solo es un respaldo automático nocturno** de trabajo sin terminar. La historia real del proyecto está en las ramas `feature/*` y en sus pull requests. Detalles: [docs/nightly-backup.md](docs/nightly-backup.md).
 
 ### Licencia
 
@@ -83,6 +85,8 @@ docker compose up -d   # PostgreSQL + PostGIS y Redis
 
 Modular monolith split into bounded contexts: `identity`, `offers`, `coupons`, `reviews`, `subscriptions` and `payments`. Each context has `api`, `application`, `domain` and `infrastructure` layers. The API is versioned under `/api/v1`.
 
+Data model (ER diagram and decisions): [docs/data-model.md](docs/data-model.md).
+
 ### Getting started
 
 > 🚧 Work in progress. Docker Compose setup lands in the first sprint.
@@ -97,7 +101,7 @@ docker compose up -d   # PostgreSQL + PostGIS and Redis
 
 - `main`: stable. Receives `develop` only at the end of each sprint, with a semantic tag (`v0.1.0`, `v0.2.0`…).
 - `develop`: integration. Every feature arrives through a pull request from a `feature/*` branch.
-- `wip/nightly`: **only an automatic nightly backup** of unfinished work. The real project history lives in the `feature/*` branches and their pull requests.
+- `wip/nightly`: **only an automatic nightly backup** of unfinished work. The real project history lives in the `feature/*` branches and their pull requests. Details: [docs/nightly-backup.md](docs/nightly-backup.md).
 
 ### License
 
