@@ -37,7 +37,8 @@ public class BusinessService {
         return BusinessResponse.from(businesses.save(business));
     }
 
-    Business requireBusiness(UUID ownerId) {
+    /** The provider's business, or 404 BUSINESS_NOT_FOUND. Also used by the coupons context. */
+    public Business requireBusiness(UUID ownerId) {
         return businesses.findByOwnerId(ownerId).orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND,
                 "BUSINESS_NOT_FOUND", "Create your business profile first."));
     }

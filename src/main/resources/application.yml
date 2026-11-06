@@ -32,7 +32,8 @@ spring:
       key-prefix: "geops:cache:"
 
 server:
-  port: ${SERVER_PORT:8080}
+  # Render injects PORT; SERVER_PORT wins when set (local runs).
+  port: ${SERVER_PORT:${PORT:8080}}
   error:
     include-stacktrace: never
     include-message: never
