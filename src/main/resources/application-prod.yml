@@ -1,0 +1,21 @@
+# Production profile (Render). Activated with SPRING_PROFILES_ACTIVE=prod.
+# Every secret comes from environment variables set in the Render dashboard; see docs/deploy.md.
+spring:
+  data:
+    redis:
+      # Render Key Value gives a single connection string (redis://host:port); it overrides host/port.
+      url: ${REDIS_URL}
+  datasource:
+    hikari:
+      # Free Neon and Render plans allow few connections; a small pool is plenty for this API.
+      maximum-pool-size: 5
+      connection-timeout: 20000
+
+server:
+  # Render terminates TLS at its proxy: trust X-Forwarded-* so links and redirects use https.
+  forward-headers-strategy: framework
+  shutdown: graceful
+
+logging:
+  level:
+    root: INFO
