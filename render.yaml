@@ -1,0 +1,44 @@
+# Render Blueprint: the API and its Redis, created together from this file.
+# PostgreSQL + PostGIS lives on Neon (see docs/deploy.md); its credentials are
+# entered in the Render dashboard when the Blueprint asks for them (sync: false).
+services:
+  - type: web
+    name: geops-api
+    runtime: docker
+    plan: free
+    # Same AWS area as Neon's us-east-1, so database round trips stay short.
+    region: virginia
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /actuator/health/readiness
+    # Deploy a new main commit only after its GitHub checks pass.
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        # Render generates a random base64 256-bit value once; it never appears in the repo.
+        generateValue: true
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: geops-redis
+          property: connectionString
+      - key: CORS_ALLOWED_ORIGINS
+        # The mobile app does not need CORS; only Swagger UI on the API's own origin does.
+        value: https://geops-api.onrender.com
+
+  - type: keyvalue
+    name: geops-redis
+    plan: free
+    region: virginia
+    # Reachable only from Render's private network, never from the internet.
+    ipAllowList: []
+    # Cache and rate-limit counters only: evicting old keys under memory pressure is safe.
+    maxmemoryPolicy: allkeys-lru
