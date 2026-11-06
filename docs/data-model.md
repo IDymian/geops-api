@@ -194,8 +194,8 @@ erDiagram
 |---|---|---|
 | `V1__enable_postgis` | Extensión PostGIS | Día 1 ✅ |
 | `V2__identity` | `users`, `refresh_tokens` | Día 1 ✅ |
-| `V3__businesses_offers` | `businesses`, `categories` (con datos), `offers` | Día 2 |
-| `V4__coupons_audit` | `coupons`, `user_coupons`, `audit_log` | Día 3 |
+| `V3__businesses_offers` | `businesses`, `categories` (con datos), `offers` | Día 2 ✅ |
+| `V4__coupons_audit` | `coupons`, `user_coupons`, `audit_log` | Día 3 ✅ |
 | `V5+` | Favoritos, reseñas, suscripciones, carrito, pedidos, pagos, dispositivos | Después del MVP |
 
 Una migración aplicada nunca se edita: cualquier cambio va en una migración nueva.
@@ -221,8 +221,8 @@ Una migración aplicada nunca se edita: cualquier cambio va en una migración nu
 |---|---|---|
 | `V1__enable_postgis` | PostGIS extension | Day 1 ✅ |
 | `V2__identity` | `users`, `refresh_tokens` | Day 1 ✅ |
-| `V3__businesses_offers` | `businesses`, `categories` (seeded), `offers` | Day 2 |
-| `V4__coupons_audit` | `coupons`, `user_coupons`, `audit_log` | Day 3 |
+| `V3__businesses_offers` | `businesses`, `categories` (seeded), `offers` | Day 2 ✅ |
+| `V4__coupons_audit` | `coupons`, `user_coupons`, `audit_log` | Day 3 ✅ |
 | `V5+` | Favorites, reviews, subscriptions, cart, orders, payments, devices | After the MVP |
 
 An applied migration is never edited: any change goes into a new migration.
