@@ -39,13 +39,17 @@ Modelo de datos (diagrama ER y decisiones): [docs/data-model.md](docs/data-model
 
 ### Cómo ejecutar
 
-> 🚧 En construcción. Se completará con Docker Compose en el primer sprint.
-
 ```bash
 cp .env.example .env   # completa los valores
 docker compose up -d   # PostgreSQL + PostGIS y Redis
 ./mvnw spring-boot:run
 ```
+
+Swagger UI: `http://localhost:8080/swagger-ui.html`
+
+### Despliegue
+
+Render (API + Redis) y Neon (PostgreSQL + PostGIS), con despliegue automático desde `main` cuando el CI pasa. Guía paso a paso: [docs/deploy.md](docs/deploy.md).
 
 ### Flujo de trabajo con Git
 
@@ -89,13 +93,17 @@ Data model (ER diagram and decisions): [docs/data-model.md](docs/data-model.md).
 
 ### Getting started
 
-> 🚧 Work in progress. Docker Compose setup lands in the first sprint.
-
 ```bash
 cp .env.example .env   # fill in the values
 docker compose up -d   # PostgreSQL + PostGIS and Redis
 ./mvnw spring-boot:run
 ```
+
+Swagger UI: `http://localhost:8080/swagger-ui.html`
+
+### Deployment
+
+Render (API + Redis) and Neon (PostgreSQL + PostGIS), deployed automatically from `main` when CI passes. Step-by-step guide: [docs/deploy.md](docs/deploy.md).
 
 ### Git workflow
 
