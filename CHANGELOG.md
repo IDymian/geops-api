@@ -3,6 +3,14 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.3.1] - 2026-11-06
+
+Maintenance release.
+
+### Removed
+
+- Dependabot configuration: dependency updates are now done by hand.
+
 ## [0.3.0] - 2026-11-06
 
 Third sprint (Day 3 of the MVP): coupons, redemption, stats and deployment. This release completes the MVP.
@@ -59,6 +67,7 @@ First sprint (Day 1 of the MVP): project foundation and authentication.
 - CI on GitHub Actions (build, Testcontainers tests, Docker image) and Dependabot.
 - Nightly backup scripts to the `wip/nightly` branch.
 
+[0.3.1]: https://github.com/geops-app/geops-api/releases/tag/v0.3.1
 [0.3.0]: https://github.com/geops-app/geops-api/releases/tag/v0.3.0
 [0.2.0]: https://github.com/geops-app/geops-api/releases/tag/v0.2.0
 [0.1.0]: https://github.com/geops-app/geops-api/releases/tag/v0.1.0
